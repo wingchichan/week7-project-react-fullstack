@@ -29,14 +29,19 @@ app.get("/allrestaurants", async (request, response) => {
   try {
     const result = await db.query("SELECT * FROM restaurants");
     const restaurantInfo = result.rows;
-    // console.log("List of all restaurants");
     response.json(restaurantInfo);
   } catch {}
 });
 
-// displays individual restaurant
+// displays individual restaurant using params so if user searches allrestaurants/1 or /2 it will go to that individual restaurant with that parameter
 app.get("/allrestaurants/:id", async (request, response) => {
+  const { id } = request.params;
   try {
+    const result = await db.query("SELECT * FROM restaurants WHERE id = $1", [
+      id,
+    ]);
+    const individualRestaurantInfo = result.rows;
+    response.json(individualRestaurantInfo);
   } catch {}
 });
 
