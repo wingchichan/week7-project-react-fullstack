@@ -9,10 +9,13 @@ export default function App() {
   return (
     <main>
       <h1>Working</h1>
+      <Link to="allorders">All Orders</Link>
+      <Link to="allproducts">Menu</Link>
       <Routes>
-        <Route path={"/allrestaurants"} element={<h1>Home Page</h1>} />
+        <Route path={"/allorders"} element={<h1>All Orders</h1>} />
+        <Route path={"/allproducts"} element={<h1>Menu</h1>} />
         <Route
-          path={"allrestaurants/:id"}
+          path={"/allorders/:id"}
           element={<h1>Individual Restaurant</h1>}
         />
       </Routes>
