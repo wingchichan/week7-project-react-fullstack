@@ -25,7 +25,7 @@ const db = new pg.Pool({ connectionString: process.env.DB_CONN });
 // });
 
 // lists all orders
-app.get("/allorders", async (request, response) => {
+app.get("/orders", async (request, response) => {
   try {
     const result = await db.query("SELECT * FROM customers_food_items");
     const allOrders = result.rows;
@@ -33,7 +33,7 @@ app.get("/allorders", async (request, response) => {
   } catch {}
 });
 
-app.get("/allproducts", async (request, response) => {
+app.get("/products", async (request, response) => {
   try {
     const result = await db.query("SELECT * FROM food_items");
     const foodItem = result.rows;
@@ -42,7 +42,7 @@ app.get("/allproducts", async (request, response) => {
 });
 
 // displays individual restaurant using params so if user searches allrestaurants/1 or /2 it will go to that individual restaurant with that parameter
-app.get("/allorders/:id", async (request, response) => {
+app.get("/orders/:id", async (request, response) => {
   const { id } = request.params;
   try {
     const result = await db.query(
